@@ -114,7 +114,7 @@ public class rolePlay
    }//end TURN BACK
    //**********************START*FUNCTION****************************************
   public static void startFunction(){
-    role = JOptionPane.showOptionDialog(null, "Welcome to the kingdom. Choose your role.", "KINGDOM ROLEPLAY", 1, -1, castle, chooseRole, chooseRole[0]);
+    role = JOptionPane.showOptionDialog(null, "Welcome to the kingdom.\nChoose your role.", "KINGDOM ROLEPLAY", 1, -1, castle, chooseRole, chooseRole[0]);
     try{
     name = JOptionPane.showInputDialog(null, "You have been accepted as a "+chooseRole[role]+". What do you wish to be called?","KINGDOM ROLEPLAY", -1);
     study = JOptionPane.showOptionDialog(null, "Good luck, "+chooseRole[role]+" " +name+". Do you choose to practice your skills?", "KINGDOM ROLEPLAY", 1, -1, null, yesNo, yesNo[0]);
