@@ -15,7 +15,7 @@ public class rolePlay
   public static String[] magicResearch = {"Orb of Healing", "Staff of Power"};
   public static int role, study, skill = 0, fight, truth = 0, randomNum = (int)(Math.random()*10)+1;
   public static String help, weapon, name, name2, role2;
-  public static ImageIcon castle = new ImageIcon("castle.jpg");
+  public static ImageIcon castle = new ImageIcon(rolePlay.class.getResource("castle.jpg"));
   //********************************STORY*LINE************************************
   public static void storyLine(){
   skill = 0;
