@@ -30,6 +30,8 @@ jobs:
           mkdir -p build docs
           find game -name "*.java" > sources.txt
           javac --release 11 -d build @sources.txt
+          # copy non-Java files (images etc.) into the build folder, keeping folder structure
+          (cd game && find . -type f ! -name "*.java" -exec cp --parents {} ../build/game/ \;)
           jar cfe docs/my-game.jar game.Main -C build .
 
       - name: Commit and push updated JAR
