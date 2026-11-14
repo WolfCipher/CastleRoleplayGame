@@ -4,6 +4,8 @@ This is my selection statement project
 It is an RPG game with different character roles
 10/26/2021
 */
+package game;
+
 import javax.swing.*;
 public class rolePlay
 {

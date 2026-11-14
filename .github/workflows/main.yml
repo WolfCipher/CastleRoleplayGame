@@ -1,0 +1,43 @@
+name: Build and Commit JAR to docs
+
+on:
+  push:
+    branches:
+      - main # Change to 'master' if your default branch is master
+    paths:
+      - 'game/**'
+  workflow_dispatch: # Allows manual runs from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  build-jar:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java 21 JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Compile and package JAR into docs/
+        run: |
+          mkdir -p build docs
+          find game -name "*.java" > sources.txt
+          javac --release 11 -d build @sources.txt
+          jar cfe docs/my-game.jar game.Main -C build .
+
+      - name: Commit and push updated JAR
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add docs/my-game.jar
+          if ! git diff --staged --quiet; then
+            git commit -m "Update docs/my-game.jar"
+            git push
+          fi
